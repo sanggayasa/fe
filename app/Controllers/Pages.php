@@ -7,12 +7,22 @@ class Pages extends BaseController
 	public function index()
 	{
 		//echo "hallo word";
-		return view('pages/contact');
+		//kirim parameter lewat controler
+		$data = [
+			'title' => 'contact',
+			'menu' => ['satu', 'dua', 'tiga']
+		];
+		echo view('layout/header', $data);
+		echo view('pages/contact');
+		echo view('layout/footer');
 	}
 	public function profil()
 	{
 		//echo "hallo word";
-		echo view('layout/header');
+		$data = [
+			'title' => 'profil'
+		];
+		echo view('layout/header', $data);
 		echo view('pages/profil');
 		echo view('layout/footer');
 	}
