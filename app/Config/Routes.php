@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Login::index');
+$routes->get('/about/(:any)', 'Login::about/$1/$2');
 $routes->get('/coba', function () {
 	echo "cobassss";
 });

@@ -11,8 +11,8 @@ class Login extends BaseController
 		//return view('login');
 	}
 	//request paramater pada link dengan 2 parameter
-	// public function index($nama='',$umur = 0)
-	// {
-	// 	echo " $nama dan $umur"
-	// }
+	public function about($nama = '', $umur = 0)
+	{
+		echo " nama saya $nama dan umur saya $umur";
+	}
 }
