@@ -12,3 +12,11 @@
     <h1> ini header</h1>
     <a href="<?= base_url('contact'); ?>">contact</a>
     <a href="<?= base_url('profil'); ?>">profil</a>
+
+    <?= $this->renderSection('content'); ?>
+    <h1>ini footer</h1>
+
+
+</body>
+
+</html>

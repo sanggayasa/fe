@@ -12,9 +12,7 @@ class Pages extends BaseController
 			'title' => 'contact',
 			'menu' => ['satu', 'dua', 'tiga']
 		];
-		echo view('layout/header', $data);
-		echo view('pages/contact');
-		echo view('layout/footer');
+		echo view('pages/contact', $data);
 	}
 	public function profil()
 	{
