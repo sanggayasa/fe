@@ -3,11 +3,11 @@
 namespace App\Controllers;
 
 class Login extends BaseController
-{	
+{
 	//request paramater pada link dengan satu parameter
-	public function index($nama='')
+	public function index($nama = '')
 	{
-		echo "$nama"
+		echo "$nama";
 		//return view('login');
 	}
 	//request paramater pada link dengan 2 parameter
@@ -15,5 +15,4 @@ class Login extends BaseController
 	// {
 	// 	echo " $nama dan $umur"
 	// }
-}
 }
