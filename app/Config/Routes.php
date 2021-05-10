@@ -33,12 +33,14 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'Login::index');
+$routes->get('/contact', 'Pages::index');
+$routes->get('/profil', 'Pages::profil');
 $routes->get('/about/(:any)', 'Login::about/$1/$2');
 //Admin\Login::index = lokasi file controller ada di 
 //folder Admin gunakan controller dengan nama Login dan Method index
 $routes->get('/admin', 'Admin\Login::index');
 $routes->get('/coba', function () {
-	echo "cobassss";
+	echo "cobasss";
 });
 
 
