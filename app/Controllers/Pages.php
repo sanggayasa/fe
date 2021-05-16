@@ -12,13 +12,26 @@ class Pages extends BaseController
 			'title' => 'contact',
 			'menu' => ['satu', 'dua', 'tiga']
 		];
-		echo view('pages/contact', $data);
+		return view('pages/contact', $data);
 	}
 	public function profil()
 	{
 		//echo "hallo word";
 		$data = [
-			'title' => 'profil'
+			'title' => 'profil',
+			'alamat' => [
+				[
+					'tipe' => 'one',
+					'alamat' => 'jl perikan',
+					'kota' => 'jaktim',
+				],
+				[
+					'tipe' => 'two',
+					'alamat' => 'jl kober',
+					'kota' => 'jaksel',
+				]
+			]
+
 		];
 		echo view('layout/header', $data);
 		echo view('pages/profil');
