@@ -1,6 +1,12 @@
 <?= $this->extend('layout/template'); ?>
 <?= $this->section('content'); ?>
 <h1>ini Komik</h1>
+<a href="/komik/create" class="btn btn-primary mt-3">Tambah Komik</a>
+<?php if (session()->getFlashdata('pesan')) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= session()->getFlashdata('pesan'); ?>
+    </div>
+<?php endif; ?>
 <table class="table table-striped">
     <thead>
         <tr>

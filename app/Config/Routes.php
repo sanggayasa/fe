@@ -35,6 +35,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/login', 'Login::index');
 $routes->get('/contact', 'Pages::index');
 $routes->get('/profil', 'Pages::profil');
+$routes->get('/komik/create', 'Komik::create');
 $routes->get('/komik/(:segment)', 'Komik::detail/$1');
 $routes->get('/about/(:any)', 'Login::about/$1/$2');
 //Admin\Login::index = lokasi file controller ada di 
