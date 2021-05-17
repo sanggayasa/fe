@@ -36,7 +36,9 @@ $routes->get('/login', 'Login::index');
 $routes->get('/contact', 'Pages::index');
 $routes->get('/profil', 'Pages::profil');
 $routes->get('/komik/create', 'Komik::create');
-$routes->get('/komik/(:segment)', 'Komik::detail/$1');
+$routes->get('/komik/edit/(:segment)', 'Komik::edit/$1');
+$routes->delete('/komik/(:num)', 'Komik::delete/$1');
+$routes->get('/komik/(:any)', 'Komik::detail/$1');
 $routes->get('/about/(:any)', 'Login::about/$1/$2');
 //Admin\Login::index = lokasi file controller ada di 
 //folder Admin gunakan controller dengan nama Login dan Method index
