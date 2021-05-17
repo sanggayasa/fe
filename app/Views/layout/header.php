@@ -12,3 +12,4 @@
     <h1> ini header</h1>
     <a href="<?= base_url('contact'); ?>">contact</a>
     <a href="<?= base_url('profil'); ?>">profil</a>
+    <a href="<?= base_url('komik'); ?>">Komik</a>
