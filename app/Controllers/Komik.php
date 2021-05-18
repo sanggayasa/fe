@@ -69,12 +69,45 @@ class Komik extends BaseController
 					'required' => '{field} komik harus diisi',
 					'is_unique' => '{field} komik sudah terdaftar'
 				]
+			],
+			//'sampul' => 'uploaded[sampul]'
+			'sampul' => [
+				//uploaded[sampul] = ini untuk validasi wajib menginput file yang bisa di selipkan di rules
+				'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
+				'errors' => [
+					//'uploaded' => 'Pilih gambar sampul terlebih dahulu',
+					'max_size' => 'Ukuran gambar terlalu besar',
+					'is_image' => 'Yang anda pilih bukan gambar',
+					'mime_in' => 'yang anda pilih bukan gambar'
+				]
 			]
 		])) {
-			$validation = \Config\Services::validation();
+			//$validation = \Config\Services::validation();
 			//dd($validation);
-			return redirect()->to('/komik/create')->withInput()->with('validation', $validation);
+			//return redirect()->to('/komik/create')->withInput()->with('validation', $validation);
+			return redirect()->to('/komik/create')->withInput();
 		}
+		//dd('berhasil');
+		//ambil gambar
+		$fileSampul = $this->request->getFile('sampul');
+		//kondisi apakah ada gambar atau tidak
+		if ($fileSampul->getError() == 4) {
+			$namaSampul = 'default.png';
+		} else {
+			//generate nama sampul randorm
+			$namaSampul = $fileSampul->getRandomName();
+			//pindahkan gambar ke folder img
+			$fileSampul->move('img', $namaSampul);
+		}
+		//dd($fileSampul);
+		//generate nama sampul randorm
+		//$namaSampul = $fileSampul->getRandomName();
+		//pindahkan gambar ke folder img
+		//$fileSampul->move('img', $namaSampul);
+		//ambil namafile sampul
+		//$namaSampul = $fileSampul->getName();
+
+
 		$slug = url_title($this->request->getVar('judul'), '-', true);
 		//dd($this->request->getVar());
 		$this->komikModel->save([
@@ -82,7 +115,7 @@ class Komik extends BaseController
 			'slug' => $slug,
 			'penulis' => $this->request->getVar('penulis'),
 			'penerbit' => $this->request->getVar('penerbit'),
-			'sampul' => $this->request->getVar('sampul')
+			'sampul' => $namaSampul
 		]);
 		//flash data
 		session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
