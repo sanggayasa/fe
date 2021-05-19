@@ -17,4 +17,13 @@ class KomikModel extends Model
         }
         return $this->where(['slug' => $slug])->first();
     }
+
+    public function search($keyword)
+    {
+        // $builder = $this->table('orang');
+        // $builder->like('nama', $keyword);
+        // return $builder;
+        //membuat search berdasarkan judul dan penerbit
+        return $this->table('komik')->like('judul', $keyword)->orLike('penerbit', $keyword);
+    }
 }

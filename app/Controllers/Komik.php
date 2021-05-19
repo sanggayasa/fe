@@ -14,6 +14,15 @@ class Komik extends BaseController
 
 	public function index()
 	{
+		$currentPage = $this->request->getVar('page_komik') ? $this->request->getVar('page_komik') : 1;
+		//d($this->request->getVar('keyword'));
+		//membuat search
+		$keyword = $this->request->getVar('keyword');
+		if ($keyword) {
+			$komik = $this->komikModel->search($keyword);
+		} else {
+			$komik = $this->komikModel;
+		}
 		// cara koneksi db model manual
 		//$db = \Config\Database::connect();
 		//$komik = $db->query("SELECT * FROM komik");
@@ -24,11 +33,16 @@ class Komik extends BaseController
 		// cara koneksi db model bawaan CI
 		//$komikModel = new \App\Models\KomikModel();
 		//$komikModel = new KomikModel();
-		$komik = $this->komikModel->findAll();
+		//$komik = $this->komikModel->findAll();
 		//dd($komik);
+
 		$data = [
 			'title' => 'komik',
-			'komik' => $this->komikModel->getKomik()
+			//'komik' => $this->komikModel->getKomik()
+			'komik' => $komik->paginate(5, 'komik'),
+			'pager' => $this->komikModel->pager,
+			'currentPage' => $currentPage
+
 		];
 		return view('komik/index', $data);
 	}
